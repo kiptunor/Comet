@@ -13,12 +13,12 @@ add_requires("imgui", {
         glfw_opengl3 = true
     }
 })
-add_requires("glfw", "glad", "glm", "miniz", "rtmidi", "yaml-cpp", "onetbb")
+add_requires("glfw", "glad", "glm", "miniz", "rtmidi", "yaml-cpp", "tbb")
 
 target("Comet")
     add_files("**.cpp")
     add_files("external/nfd/*.c")
-    add_includedirs("external/nfd/include")
+    add_includedirs("external/nfd/include", "external/bass", "external/bassmidi")
     
     remove_files("assets/ColorPalette/*") -- idk why there are some source files duplicated
     
@@ -26,9 +26,13 @@ target("Comet")
         remove_files("external/nfd/nfd_win.cpp")
     end
 
+    if is_plat("windows") then
+        remove_files("external/nfd/nfd_zenity.c")
+    end
+
     
 
-    add_packages("glfw", "glad", "glm", "imgui", "miniz", "rtmidi", "yaml-cpp", "onetbb")
+    add_packages("glfw", "glad", "glm", "imgui", "miniz", "rtmidi", "yaml-cpp", "tbb")
     
     if is_plat("linux") then
         add_linkdirs("external/bass/linux", "external/bassmidi/linux")
