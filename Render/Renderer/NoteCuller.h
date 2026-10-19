@@ -5,6 +5,7 @@
 #include "Render/RenderView.h"
 #include <vector>
 #include <array>
+#include <cstdint>
 
 struct NoteCullRange
 {

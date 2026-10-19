@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <array>
 #include "MIDITrack.h"
 #include "Events/TempoEvent.h"
 #include "Events/NoteEvent.h"

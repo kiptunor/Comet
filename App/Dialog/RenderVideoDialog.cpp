@@ -66,11 +66,13 @@ void RenderVideoDialog::DetectFFmpeg()
 
 #if defined(_WIN32)
 	std::filesystem::path ffmpegPath = binDir / "ffmpeg.exe";
-#else
-	std::filesystem::path ffmpegPath = binDir / "ffmpeg";
+	hasFFmpeg = std::filesystem::exists(ffmpegPath) && std::filesystem::is_regular_file(ffmpegPath);
 #endif
 
-	hasFFmpeg = std::filesystem::exists(ffmpegPath) && std::filesystem::is_regular_file(ffmpegPath);
+// ffmpeg cannot ever be missing from linux
+#ifdef __linux__
+	hasFFmpeg = true;
+#endif
 }
 
 void RenderVideoDialog::DrawContent()

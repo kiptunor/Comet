@@ -2,7 +2,8 @@
 #include "Comet.h"
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
-#include <glad/glad.h>
+//#include <glad/glad.h>
+#include <glad/gl.h>
 #include <vector>
 
 #pragma region Buffer

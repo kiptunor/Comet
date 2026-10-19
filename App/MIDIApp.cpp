@@ -434,11 +434,15 @@ void MIDIApp::UpdateNoteCounterInfo()
 	double time = Utils::GetCurrTime<std::chrono::microseconds>() / 1000000.0;
 	fps = 1.0 / (time - lastFrameTime);
 	audioBuffer = -1.0;
+
+	// Windows only for some reason
+#ifdef _WIN32
 	auto* prAudio = dynamic_cast<PrerenderedEngine*>(GetMIDIAudio()->GetCurrentEngine());
 	if (prAudio)
 	{
 		audioBuffer = prAudio->GetBufferSeconds();
 	}
+#endif
 }
 
 void MIDIApp::RegisterKeyPress(ImGuiKey key, bool ctrl, bool shift, bool alt)

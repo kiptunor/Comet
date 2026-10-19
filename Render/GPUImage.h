@@ -5,7 +5,8 @@
 #include <memory>
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
-#include <glad/glad.h>
+//#include <glad/glad.h>
+#include <glad/gl.h>
 #include <vector>
 
 inline std::vector<unsigned char> MISSING_TEXTURE_DATA = {

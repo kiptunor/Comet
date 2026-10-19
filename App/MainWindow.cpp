@@ -195,7 +195,11 @@ bool MainWindow::InitializeGLFW()
 		});
 
 	glfwMakeContextCurrent(window);
-	gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+	// gladLoadGLLoader((GLADloadproc)glfwGetProcAddress); // Old
+
+	// New
+	gladLoaderLoadGL();
+	//gladLoaderLoadGL((GLADloadfunc)glfwGetProcAddress);
 
 	return true;
 }
